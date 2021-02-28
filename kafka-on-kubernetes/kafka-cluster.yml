@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka1
+spec:
+  replicas: 1
+  selector:
+    app: kafka1
+  template:
+    metadata:
+      labels:
+        app: kafka1
+    spec:
+      containers:
+      - name: kafka1
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        env:
+        - name: KAFKA_BROKER_ID
+          value: "1"
+        - name: KAFKA_ADVERTISED_PORT
+          value: "9092"
+        - name: KAFKA_ADVERTISED_HOST_NAME
+          value: "af2545fc9bf214ecd9bb281e4eeb2784-651446329.ap-northeast-2.elb.amazonaws.com"
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: zoo1:2181,zoo2:2181
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka2
+spec:
+  replicas: 1
+  selector:
+    app: kafka2
+  template:
+    metadata:
+      labels:
+        app: kafka2
+    spec:
+      containers:
+      - name: kafka2
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        env:
+        - name: KAFKA_BROKER_ID
+          value: "2"
+        - name: KAFKA_ADVERTISED_PORT
+          value: "9092"
+        - name: KAFKA_ADVERTISED_HOST_NAME
+          value: "a8c647669c5d64602a8a367098550827-409143955.ap-northeast-2.elb.amazonaws.com"
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: zoo1:2181,zoo2:2181
+
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kafka3
+spec:
+  replicas: 1
+  selector:
+    app: kafka3
+  template:
+    metadata:
+      labels:
+        app: kafka3
+    spec:
+      containers:
+      - name: kafka3
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        env:
+        - name: KAFKA_BROKER_ID
+          value: "3"
+        - name: KAFKA_ADVERTISED_PORT
+          value: "9092"
+        - name: KAFKA_ADVERTISED_HOST_NAME
+          value: "a63543f6db37a4e38bf6f3bc7af62006-312144799.ap-northeast-2.elb.amazonaws.com"
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: zoo1:2181,zoo2:2181
+
