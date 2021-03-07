@@ -39,4 +39,5 @@ submit_spark_jobs() {
     echo "Spark Jobs are done."
 }
 
+zip_py_files_for_spark_jobs
 submit_spark_jobs
