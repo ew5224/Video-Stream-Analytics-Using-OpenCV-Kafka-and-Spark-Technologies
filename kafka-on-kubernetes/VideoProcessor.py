@@ -6,10 +6,10 @@ def run_spark_job(spark):
   df = spark \
     .readStream \
     .format("kafka") \
-    .option("kafka.bootstrap.servers", "a63543f6db37a4e38bf6f3bc7af62006-312144799.ap-northeast-2.elb.amazonaws.com:9092, \
-            af2545fc9bf214ecd9bb281e4eeb2784-651446329.ap-northeast-2.elb.amazonaws.com:9092, \
-            a8c647669c5d64602a8a367098550827-409143955.ap-northeast-2.elb.amazonaws.com:9092") \
-    .option("subscribe", "nomask-test5") \
+    .option("kafka.bootstrap.servers", "a033c466eb00e4ad4944fbdb9601e68c-1925513909.ap-northeast-2.elb.amazonaws.com:9092, \
+            a63ce823295da40559f25beb8ce48147-1966972725.ap-northeast-2.elb.amazonaws.com:9092, \
+            aedac70e74b6e44eb831a820b2b3c1e0-68828054.ap-northeast-2.elb.amazonaws.com:9092") \
+    .option("subscribe", "nomask-test") \
     .load()
 
 
